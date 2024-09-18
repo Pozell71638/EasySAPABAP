@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SSST" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <HEADER>
+    <STYLENAME>ZST_PK8</STYLENAME>
+    <MASTERLANG>E</MASTERLANG>
+    <LANGU>E</LANGU>
+    <CAPTION>Style ZST_PK8</CAPTION>
+    <V_CAPTION>Style ZST_PK8</V_CAPTION>
+    <TDFIRSTPAR>B1</TDFIRSTPAR>
+    <CPI>10.0</CPI>
+    <LPI>6.0</LPI>
+    <TDTABDIST>1.0</TDTABDIST>
+    <TDTABDISTU>CM</TDTABDISTU>
+    <ACTIVE>A</ACTIVE>
+    <TDFAMILY>COURIER</TDFAMILY>
+    <TDHEIGHT>120</TDHEIGHT>
+    <TDBOLD>X</TDBOLD>
+    <RED>255</RED>
+    <GREEN>120</GREEN>
+    <BLUE>120</BLUE>
+    <USED>X</USED>
+   </HEADER>
+   <SSFPARAS>
+    <SSFPARAS>
+     <ACTIVE>A</ACTIVE>
+     <STYLENAME>ZST_PK8</STYLENAME>
+     <TDPARGRAPH>B1</TDPARGRAPH>
+     <TDPJUSTIFY>LEFT</TDPJUSTIFY>
+     <TDPLDIST>1.0</TDPLDIST>
+     <TDPLDISTU>LN</TDPLDISTU>
+     <TDPTOPU>CM</TDPTOPU>
+     <TDPBOTU>CM</TDPBOTU>
+     <TDPLEFTU>CM</TDPLEFTU>
+     <TDPRIGHTU>CM</TDPRIGHTU>
+     <TDPENTRYU>CM</TDPENTRYU>
+     <TDFAMILY>TIMES</TDFAMILY>
+     <TDHEIGHT>120</TDHEIGHT>
+     <TDBOLD>X</TDBOLD>
+     <TDITALIC>*</TDITALIC>
+     <TDUNDERLIN>X</TDUNDERLIN>
+     <RED>255</RED>
+     <GREEN>120</GREEN>
+     <BLUE>120</BLUE>
+     <USED>X</USED>
+     <LANGU>E</LANGU>
+     <CAPTION>STYLE ZST_PK8</CAPTION>
+    </SSFPARAS>
+   </SSFPARAS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

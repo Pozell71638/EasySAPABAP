@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SSST" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <HEADER>
+    <STYLENAME>ZST_PK8_1</STYLENAME>
+    <MASTERLANG>E</MASTERLANG>
+    <LANGU>E</LANGU>
+    <CAPTION>Style ZST_PK8_1</CAPTION>
+    <V_CAPTION>Style ZST_PK8_1</V_CAPTION>
+    <TDFIRSTPAR>B1</TDFIRSTPAR>
+    <CPI>10.0</CPI>
+    <LPI>6.0</LPI>
+    <TDTABDIST>1.0</TDTABDIST>
+    <TDTABDISTU>CM</TDTABDISTU>
+    <ACTIVE>A</ACTIVE>
+    <TDFAMILY>HELV_I7</TDFAMILY>
+    <TDHEIGHT>280</TDHEIGHT>
+    <TDBOLD>X</TDBOLD>
+    <RED>160</RED>
+    <GREEN>066</GREEN>
+    <BLUE>144</BLUE>
+    <USED>X</USED>
+   </HEADER>
+   <SSFPARAS>
+    <SSFPARAS>
+     <ACTIVE>A</ACTIVE>
+     <STYLENAME>ZST_PK8_1</STYLENAME>
+     <TDPARGRAPH>B1</TDPARGRAPH>
+     <TDPJUSTIFY>LEFT</TDPJUSTIFY>
+     <TDPLDIST>1.0</TDPLDIST>
+     <TDPLDISTU>LN</TDPLDISTU>
+     <TDPTOPU>CM</TDPTOPU>
+     <TDPBOTU>CM</TDPBOTU>
+     <TDPLEFTU>CM</TDPLEFTU>
+     <TDPRIGHTU>CM</TDPRIGHTU>
+     <TDPENTRYU>CM</TDPENTRYU>
+     <TDNUMLEFTU>CM</TDNUMLEFTU>
+     <TDFAMILY>HELV_I7</TDFAMILY>
+     <TDHEIGHT>280</TDHEIGHT>
+     <TDBOLD>X</TDBOLD>
+     <TDITALIC>*</TDITALIC>
+     <TDUNDERLIN>*</TDUNDERLIN>
+     <LANGU>E</LANGU>
+     <CAPTION>HELVE_17 FOR TITLE</CAPTION>
+    </SSFPARAS>
+   </SSFPARAS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

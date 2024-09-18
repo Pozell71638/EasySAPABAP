@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access Control Example'
+@MappingRole: true
+define role ZCDS__PK_DCL_EX01 {
+    grant
+        select
+            on
+                ZCDS_PK_DDL_EX22
+                    where
+                      ( land1 ) = aspect pfcg_auth( YK_LAND1, land1, ACTVT = '03' );
+                        
+}

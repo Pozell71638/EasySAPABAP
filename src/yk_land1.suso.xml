@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>YK_LAND1</OBJCT>
+    <FIEL1>LAND1</FIEL1>
+    <FIEL2>ACTVT</FIEL2>
+    <OCLSS>YYCD</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>YK_LAND1</OBJECT>
+    <TTEXT>AUTHORIZATION</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>YK_LAND1</OBJCT>
+   </TOBJVORFLG>
+   <TACTZ>
+    <TACTZ>
+     <BROBJ>YK_LAND1</BROBJ>
+     <ACTVT>03</ACTVT>
+    </TACTZ>
+   </TACTZ>
+  </asx:values>
+ </asx:abap>
+</abapGit>

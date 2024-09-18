@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOBJ>
+    <OBJCT>YS_LAND1</OBJCT>
+    <OCLSS>YYCD</OCLSS>
+   </TOBJ>
+   <TOBJT>
+    <LANGU>E</LANGU>
+    <OBJECT>YS_LAND1</OBJECT>
+    <TTEXT>Demo authorization object Pinar</TTEXT>
+   </TOBJT>
+   <TOBJVORFLG>
+    <OBJCT>YS_LAND1</OBJCT>
+   </TOBJVORFLG>
+  </asx:values>
+ </asx:abap>
+</abapGit>

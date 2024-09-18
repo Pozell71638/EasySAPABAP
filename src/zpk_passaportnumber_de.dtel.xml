@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZPK_PASSAPORTNUMBER_DE</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZPK_PASSAPORTNUMBER_DO</DOMNAME>
+    <HEADLEN>16</HEADLEN>
+    <SCRLEN1>06</SCRLEN1>
+    <SCRLEN2>16</SCRLEN2>
+    <SCRLEN3>16</SCRLEN3>
+    <DDTEXT>PASSAPORT NUMBER DATA ELEMENT</DDTEXT>
+    <REPTEXT>PASSAPORT NUMBER</REPTEXT>
+    <SCRTEXT_S>PASS_N</SCRTEXT_S>
+    <SCRTEXT_M>PASSAPORT NUMBER</SCRTEXT_M>
+    <SCRTEXT_L>PASSAPORT NUMBER</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+  </asx:values>
+ </asx:abap>
+</abapGit>

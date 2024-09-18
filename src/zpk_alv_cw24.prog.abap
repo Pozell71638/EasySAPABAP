@@ -1,0 +1,287 @@
+*&---------------------------------------------------------------------*
+*& Report ZPK_ALV_CW24
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZPK_ALV_CW24.
+
+*-------Declaration of table for select option-------------------------*
+TABLES: ekko.
+
+*----Declaration of type pools for ALV slis----------------------------*
+TYPE-POOLS: slis.
+
+*------Declaration of internal table structures------------------------*
+TYPES: BEGIN OF ty_ekko,
+        ebeln TYPE ekko-ebeln,
+        bukrs TYPE ekko-bukrs,
+        aedat TYPE ekko-aedat,
+        ernam TYPE ekko-ernam,
+        lifnr TYPE ekko-lifnr,
+        bedat TYPE ekko-bedat,
+        expand,               "Expand operation on header list
+       END OF ty_ekko,
+
+       BEGIN OF ty_ekpo,
+        ebeln TYPE ekpo-ebeln,
+        ebelp TYPE ekpo-ebelp,
+        aedat TYPE ekpo-aedat,
+        matkl TYPE ekpo-matkl,
+        menge TYPE ekpo-menge,
+        meins TYPE ekpo-meins,
+        netpr TYPE ekpo-netpr,
+        peinh TYPE ekpo-peinh,
+       END OF ty_ekpo.
+
+DATA: var type ekko-ebeln," variable for select-opion
+      "Internal tables
+      it_ekko TYPE TABLE OF ty_ekko,
+      it_ekpo TYPE TABLE OF ty_ekpo,
+
+      "Field catalog work area & tables
+      wa_fcat TYPE slis_fieldcat_alv,
+      it_fcat TYPE slis_t_fieldcat_alv,
+
+      "ALV layout work area
+      wa_layout TYPE slis_layout_alv,
+
+      "Key information for hierarchical list
+      wa_key TYPE slis_keyinfo_alv.
+
+*------Event Initialization--------------------------------------------*
+INITIALIZATION.
+  SELECT-OPTIONS: s_ebeln FOR var.
+
+*-----Event Start of Selection-----------------------------------------*
+START-OF-SELECTION.
+  PERFORM get_ekko.
+  PERFORM get_ekpo.
+  PERFORM field_catalog.
+
+  PERFORM alv_layout.
+  PERFORM key_info.
+  PERFORM alv_hierseq_list_display.
+*&---------------------------------------------------------------------*
+*& Form get_ekko
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM get_ekko .
+    SELECT ebeln bukrs aedat ernam lifnr bedat
+      FROM ekko INTO TABLE it_ekko
+      WHERE ebeln IN s_ebeln.
+
+    IF sy-subrc = 0.
+      SORT it_ekko.
+    ELSE.
+      MESSAGE 'PO doesn''t exist' TYPE 'I'.
+    ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form get_ekpo
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM get_ekpo .
+ IF it_ekko IS NOT INITIAL.
+    SELECT ebeln ebelp aedat matkl menge meins netpr peinh
+      FROM ekpo INTO TABLE it_ekpo
+      FOR ALL ENTRIES IN it_ekko
+      WHERE ebeln = it_ekko-ebeln.
+
+    IF sy-subrc = 0.
+      SORT it_ekpo.
+    ENDIF.
+  ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form field_catalog
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM field_catalog .
+ DATA lv_col TYPE i VALUE 0.
+
+  IF it_ekko IS NOT INITIAL.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'EBELN'.
+    wa_fcat-tabname   = 'IT_EKKO'.
+    wa_fcat-seltext_l = 'Purchase Order'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'BUKRS'.
+    wa_fcat-tabname   = 'IT_EKKO'.
+    wa_fcat-seltext_l = 'Company Code'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'AEDAT'.
+    wa_fcat-tabname   = 'IT_EKKO'.
+    wa_fcat-seltext_l = 'Creation Date'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'ERNAM'.
+    wa_fcat-tabname   = 'IT_EKKO'.
+    wa_fcat-seltext_l = 'Created By'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'LIFNR'.
+    wa_fcat-tabname   = 'IT_EKKO'.
+    wa_fcat-seltext_l = 'Vendor'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'BEDAT'.
+    wa_fcat-tabname   = 'IT_EKKO'.
+    wa_fcat-seltext_l = 'Purchasing Document Date'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+  ENDIF.
+
+  IF it_ekpo IS NOT INITIAL.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'EBELN'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Purchase Order'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'EBELP'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Item'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'MATKL'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Material Group'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'AEDAT'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Creation Date'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'MENGE'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'PO Quantity'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'MEINS'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Unit'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'NETPR'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Net Price'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+
+    lv_col            = lv_col + 1.
+    wa_fcat-col_pos   = lv_col.
+    wa_fcat-fieldname = 'PEINH'.
+    wa_fcat-tabname   = 'IT_EKPO'.
+    wa_fcat-seltext_l = 'Price Unit'.
+    APPEND wa_fcat TO it_fcat.
+    CLEAR wa_fcat.
+  ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form alv_layout
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM alv_layout .
+ wa_layout-zebra             = 'X'. "Zebra looks
+  wa_layout-colwidth_optimize = 'X'. "Column width optimized
+  wa_layout-expand_fieldname  = 'EXPAND'. "Expand operation
+  wa_layout-window_titlebar   = 'Hierarchical PO Header & Item Display'.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form key_info
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM key_info .
+wa_key-header01 = 'EBELN'. "Purchase Order number
+  wa_key-item01   = 'EBELN'. "is the key for header & item table
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form alv_hierseq_list_display
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM alv_hierseq_list_display .
+CALL FUNCTION 'REUSE_ALV_HIERSEQ_LIST_DISPLAY'
+  EXPORTING
+*   I_INTERFACE_CHECK              = ' '
+   I_CALLBACK_PROGRAM             = sy-repid
+   IS_LAYOUT                      = wa_layout
+   IT_FIELDCAT                    = it_fcat
+    i_tabname_header               = 'IT_EKKO'
+    i_tabname_item                 = 'IT_EKPO'
+    is_keyinfo                     = wa_key
+  TABLES
+    t_outtab_header                = it_ekko
+    t_outtab_item                  = it_ekpo
+* EXCEPTIONS
+*   PROGRAM_ERROR                  = 1
+*   OTHERS                         = 2
+          .
+IF sy-subrc <> 0.
+* Implement suitable error handling here
+ENDIF.
+
+ENDFORM.

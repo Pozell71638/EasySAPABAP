@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>BALANCE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Amount in local currency</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DEPOSIT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Deposit of Amount in the Bank</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_BALANCE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Opening balance in the Bank</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>WITHDRAW</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Withdraw of the amount</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_BALANCE</CMPNAME>
+     <SCONAME>AMOUNT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Amount in local currency</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_BALANCE</CMPNAME>
+     <SCONAME>NEW_BALANCE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Amount in local currency</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WITHDRAW</CMPNAME>
+     <SCONAME>AMOUNT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Amount in local currency</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WITHDRAW</CMPNAME>
+     <SCONAME>NEW_BALANCE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Amount in local currency</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

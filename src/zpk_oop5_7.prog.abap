@@ -1,0 +1,45 @@
+*&---------------------------------------------------------------------*
+*& Report ZPK_OOP5_7
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZPK_OOP5_7.
+
+
+CLASS TOM DEFINITION.
+  PUBLIC SECTION.
+  METHODS: PRO . "NORMAL METHOD THAT TRIGGERS EVENT
+  EVENTS: CUTOFF.
+  ENDCLASS.
+
+  CLASS TOM IMPLEMENTATION.
+METHOD PRO.
+RAISE EVENT CUTOFF.
+ENDMETHOD.
+
+    ENDCLASS.
+
+
+  CLASS JERRY DEFINITION.
+  PUBLIC SECTION.
+ METHODS: h_CUTOFF FOR EVENT CUTOFF OF TOM.    " HANDLER METHOD FOR THE EVENT OF CLASS TOM
+  ENDCLASS.
+
+CLASS JERRY IMPLEMENTATION.
+  METHOD h_CUTOFF.
+WRITE: 'Handling the CutOff'.
+WRITE: / 'Event has been processed'.
+ENDMETHOD.
+  ENDCLASS.
+
+START-OF-SELECTION.
+  DATA: OBJ1 TYPE REF TO TOM,
+        OBJ2 TYPE REF TO JERRY.
+
+  CREATE OBJECT: OBJ1,
+                 OBJ2.
+
+" WE NEED TO CONNECT THE EVENT HANDLER METHOD WITH THE EVENT CLASS
+  SET HANDLER OBJ2->h_cutoff FOR OBJ1.
+
+  CALL METHOD OBJ1->pro.
